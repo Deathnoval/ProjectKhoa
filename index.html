@@ -81,9 +81,16 @@
         </div>
         <div class="controls">
             <h2>Điều Khiển</h2>
+            <button type="button" id="startCaptureVideo" data-external="true" class="button"
+        style="padding:30px;margin:20px; margin-top: 60px" onclick="captureVideo();">startCaptureVideo</button><br>
+      <button type="button" id="stopCaptureVideo" data-external="true" class="button"
+        style="padding:30px;margin:20px; margin-top: 60px; display: none;"
+        onclick="stopCaptureVideo();">stopCaptureVideo</button><br>
+      <img src="" width="200" height="200px" id="videoCall" style="display: none;"> <br>
             <div class="direction-buttons" style="flex-basis: 100%; padding: 20px;">
                 <button id="forward" class="control-button">↑</button>
             </div>
+            
             <div class="direction-buttons" style="flex-basis: 100%">
                 <button id="left" class="control-button">←</button>
                 <button id="backward" class="control-button">↓</button>
@@ -104,6 +111,27 @@
     <script>
         //const robot = new OhmniRobot();
         const videoElement = document.createElement("video");
+        var intervalGetVideo;
+
+        function captureVideo() {
+            intervalGetVideo = setInterval(function () {
+              Ohmni.captureVideo();
+            }, 33);
+            document.getElementById('videoCall').style.display = "";
+            document.getElementById('stopCaptureVideo').style.display = "inline-block";
+            document.getElementById('startCaptureVideo').style.display = "none";
+          }
+      
+          function stopCaptureVideo() {
+            clearInterval(intervalGetVideo);
+            document.getElementById('videoCall').style.display = "none";
+            document.getElementById('startCaptureVideo').style.display = "inline-block";
+            document.getElementById('stopCaptureVideo').style.display = "none";
+          }
+      
+          function captureVideoCb(imageBase64) {
+            document.getElementById("videoCall").src = imageBase64;
+          }
 
         // Đọc hình ảnh video từ camera của Ohmni Robot
         //const streamURL = robot.getStreamURL();
