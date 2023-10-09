@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>ĐIỀU KHIỂN ROBOT OHMNI DI CHUYỂN VÀ ĐO KHOẢNG CÁCH - ĐH CÔNG NGHIỆP - DHDTVT16A</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><img src="images/logo.jpg"></div>
+        <h1>ĐIỀU KHIỂN ROBOT OHMNI DI CHUYỂN VÀ ĐO KHOẢNG CÁCH</h1>
+        <h1> - ĐH CÔNG NGHIỆP - DHDTVT16A</h1>
+        <h2>
+            GVHD: MẠC ĐỨC DŨNG
+        </h2>
+    </header>
+    <main>
+        <div class="team-section">
+            <div class="team-member">
+                <img src="images/Khoa.jpg" alt="Thành viên 1">
+                <h2>LÊ NGUYỄN ĐĂNG KHOA</h2>
+
+                <p>20044601</p>
+            </div>
+            <div class="team-member">
+                <img src="images/1.jpg" alt="Thành viên 2">
+                <h2>ĐINH HOÀNG NAM</h2>
+
+                <p>20062421</p>
+            </div>
+            <div class="team-member">
+                <img src="images/2.jpg" alt="Thành viên 3">
+                <h2>ĐÀO TÚ ANH</h2>
+
+                <p>20002011</p>
+            </div>
+            <div class="team-member">
+                <img src="images/3.jpg" alt="Thành viên 4">
+                <h2>NGUYỄN LÂM HOÀNG</h2>
+
+                <p>20055301</p>
+            </div>
+            <div class="team-member">
+                <img src="images/4.jpg" alt="Thành viên 5">
+                <h2>NGUYỄN CHÍ CƯỜNG</h2>
+
+                <p>20009561</p>
+            </div>
+        </div>
+        <div class="NoiDung">
+            <h2>Robot ohmni</h2>
+            <p>
+                Robot Ohmni là một robot telepresence di động, cho phép người dùng có thể hiện diện ở hai nơi cùng một
+                lúc. Robot này có màn hình cảm ứng 10,1 inch, camera 4K, loa và micrô chất lượng cao. Robot Ohmni có thể
+                được sử dụng cho nhiều mục đích khác nhau, bao gồm công việc từ xa, giáo dục và đào tạo từ xa, chăm sóc
+                sức khỏe từ xa và du lịch và giải trí.
+                <br>
+                <img src="images/Ohmni.jpg" alt="Robot Ohmni">
+                <br>
+                Dưới đây là một số tính năng chính của robot Ohmni:
+            <ul>
+                <li>Màn hình cảm ứng 10,1 inch với độ phân giải Full HD</li>
+                <li>Camera 4K với khả năng chụp ảnh 13 megapixel và zoom quang học 2x</li>
+                <li>Loa 15W với âm thanh rõ ràng, to hơn 8 lần so với giọng nói của con người</li>
+                <li>Micrô array 4 kênh với khả năng lọc tiếng ồn môi trường</li>
+                <li>Pin LiFePO4 95Wh cho thời gian sử dụng lên đến 6 giờ</li>
+                <li>Hệ thống lái Ohmni Glide cho phép điều khiển robot một cách dễ dàng</li>
+            </ul>
+            <br>
+            Robot Ohmni là một giải pháp telepresence tiên tiến, mang đến trải nghiệm hiện diện từ xa chân thực và tương
+            tác.
+            </p>
+        </div>
+        <div class="controls">
+            <h2>Điều Khiển</h2>
+            <div class="direction-buttons" style="flex-basis: 100%; padding: 20px;">
+                <button id="forward" class="control-button">↑</button>
+            </div>
+            <div class="direction-buttons" style="flex-basis: 100%">
+                <button id="left" class="control-button">←</button>
+                <button id="backward" class="control-button">↓</button>
+                <button id="right" class="control-button">→</button>
+            </div>
+
+        </div>
+        <div class="distance">
+            <h2>Khoảng Cách Đọc</h2>
+            <p id="distance-reading">Đang đọc...</p>
+
+            <div id="chart-distance" class="container"></div>
+        </div>
+    </main>
+    <script src="https://api.ohmnilabs.com/ohmni-api/Ohmni-incall.js"></script>
+    <script>
+        const buttonList = document.querySelectorAll(".control-button");
+
+        function changeColor(element) {
+            element.style.backgroundColor = "red";
+        }
+
+        buttonList.forEach(element => {
+            element.addEventListener("mousedown", changeColor);
+        });
+        function moveForward() {
+            robot.move("forward");
+        }
+
+        function moveBackward() {
+            robot.move("backward");
+        }
+
+        function turnLeft() {
+            robot.turn("left");
+        }
+
+        function turnRight() {
+            robot.turn("right");
+        }
+
+        function stop() {
+            robot.stop();
+        }
+
+        document.addEventListener("keydown", function (event) {
+            const key = event.keyCode;
+
+            switch (key) {
+                case 87: // phím mũi tên lên(38)
+                    buttonList[0].style.backgroundColor = "red";
+                    console.log(buttonList[0])
+                    moveForward();
+                    break;
+                case 65: // phím mũi tên trái(37)
+                    buttonList[1].style.backgroundColor = "red";
+                    console.log(buttonList[1])
+                    turnLeft();
+                    break;
+                case 83: // phím mũi tên xuống(40)
+                    buttonList[2].style.backgroundColor = "red";
+                    console.log(buttonList[2])
+                    moveBackward();
+                    break;
+                case 68: // phím mũi tên phải(39)
+                    buttonList[3].style.backgroundColor = "red";
+                    console.log(buttonList[3])
+                    turnRight();
+                    break;
+
+            }
+            console.log()
+        });
+        document.addEventListener("keyup", function (event) {
+            const key = event.keyCode;
+
+            switch (key) {
+                case 87: // phím mũi tên lên
+                    buttonList[0].style.backgroundColor = "#3498db";
+                    stop();
+                    break;
+                case 65: // phím mũi tên trái
+                    buttonList[1].style.backgroundColor = "#3498db";
+                    stop();
+                    break;
+                case 68: // phím mũi tên phải
+                    buttonList[3].style.backgroundColor = "#3498db";
+                    stop();
+                    break;
+                case 83: // phím mũi tên xuống
+                    buttonList[2].style.backgroundColor = "#3498db";
+                    stop();
+                    break;
+            }
+        });
+        var chartT = new Highcharts.Chart({
+            chart: { renderTo: 'chart-distance' },
+            title: { text: 'HC-SR04 Distance' },
+            series: [{
+                showInLegend: false,
+                data: []
+            }],
+            plotOptions: {
+                line: {
+                    animation: false,
+                    dataLabels: { enabled: true }
+                },
+                series: { color: '#059e8a' }
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: { second: '%H:%M:%S' }
+            },
+            yAxis: {
+                title: { text: 'Distance (CM)' }
+            },
+            credits: { enabled: false }
+        });
+        setInterval(function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var x = (new Date()).getTime(),
+                        y = parseFloat(this.responseText);
+                    //console.log(this.responseText);
+                    if (chartT.series[0].data.length > 40) {
+                        chartT.series[0].addPoint([x, y], true, true, true);
+                    } else {
+                        chartT.series[0].addPoint([x, y], true, false, true);
+                    }
+                }
+            };
+            xhttp.open("GET", "/distance", true);
+            xhttp.send();
+        }, 3000);
+
+    </script>
+</body>
+
+</html>

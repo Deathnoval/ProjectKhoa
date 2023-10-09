@@ -1,0 +1,150 @@
+/* Thiết lập font chữ và màu sắc chung */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  
+}
+
+h2 {
+  font-family: Arial;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  height: 180px;
+  
+}
+header img{
+  max-width: 100px;
+  border-radius: 50%;
+  float: left;
+  
+}
+
+
+/* Tiêu đề */
+header h1 {
+  font-size: 32px;
+}
+header h2{
+  font-size: 18px;
+  float: right;
+}
+/* Main content */
+main {
+  display: flex;
+  flex-direction: column;
+  /* Hiển thị phần tử theo chiều dọc */
+  align-items: center;
+  /* Căn giữa theo chiều dọc */
+  padding: 20px;
+}
+
+/* Phần giới thiệu nhóm */
+.team-section {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  /* Cho phép các thành viên hiển thị trên cùng 1 hàng */
+  justify-content: space-around;
+  width: 1200px;
+  /* Căn các thành viên giữa cùng 1 hàng */
+}
+
+.team-member {
+  margin: 20px;
+  text-align: center;
+}
+
+.team-member img {
+  max-width: 100px;
+  border-radius: 50%;
+}
+
+.team-member h2 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* Phần điều khiển robot */
+.controls {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+  width: 1200px;
+
+  
+  /* Khoảng cách giữa phần giới thiệu nhóm và phần điều khiển */
+}
+.NoiDung{
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: justify;
+  margin-top: 20px;
+  width: 1200px;
+  font-family: Arial;
+  font-size: 1.0rem;
+  
+}
+.NoiDung img {
+  float: left;
+  max-width: 500px;
+  max-height: 300px;
+  
+}
+
+.direction-buttons {
+ 
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-basis: 100%;
+  gap: 10px
+  
+}
+
+.direction-buttons button {
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  
+
+}
+
+/* Phần khoảng cách đọc */
+.distance {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  width: 1200px;
+  /* Khoảng cách giữa phần điều khiển và phần khoảng cách đọc */
+}
+
+#distance-reading {
+  font-size: 24px;
+}
