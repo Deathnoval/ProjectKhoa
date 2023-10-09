@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    
+    <script src="https://api.ohmnilabs.com/ohmni-api/Ohmni-incall.js"></script>
+
+
     <link rel="stylesheet" href="style.css">
 
     <title>ĐIỀU KHIỂN ROBOT OHMNI DI CHUYỂN VÀ ĐO KHOẢNG CÁCH - ĐH CÔNG NGHIỆP - DHDTVT16A</title>
@@ -96,8 +100,18 @@
             <div id="chart-distance" class="container"></div>
         </div>
     </main>
-    <script src="https://api.ohmnilabs.com/ohmni-api/Ohmni-incall.js"></script>
     <script>
+        //const robot = new OhmniRobot();
+        const videoElement = document.createElement("video");
+        // Đọc hình ảnh video từ camera của Ohmni Robot
+        //const streamURL = robot.getStreamURL();
+
+        // Tạo một phần tử video HTML
+        //videoElement.src = streamURL;
+
+        // Hiển thị phần tử video trên màn hình
+        //document.body.appendChild(videoElement); 
+
         const buttonList = document.querySelectorAll(".control-button");
 
         function changeColor(element) {
@@ -108,23 +122,23 @@
             element.addEventListener("mousedown", changeColor);
         });
         function moveForward() {
-            robot.move("forward");
+            Ohmni.move(500, 500, 500);
         }
 
         function moveBackward() {
-            robot.move("backward");
+            Ohmni.move("backward");
         }
 
         function turnLeft() {
-            robot.turn("left");
+            Ohmni.move("left");
         }
 
         function turnRight() {
-            robot.turn("right");
+            Ohmni.move("right");
         }
 
         function stop() {
-            robot.stop();
+            Ohmni.move(0,0,0);
         }
 
         document.addEventListener("keydown", function (event) {
