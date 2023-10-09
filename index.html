@@ -110,27 +110,27 @@
     <script src="https://api.ohmnilabs.com/ohmni-api/Ohmni-incall.js"></script>
     <script>
         //const robot = new OhmniRobot();
-        // var intervalGetVideo;
+        var intervalGetVideo;
 
-        // function captureVideo() {
-        //     intervalGetVideo = setInterval(function () {
-        //       Ohmni.captureVideo();
-        //     }, 33);
-        //     document.getElementById('videoCall').style.display = "";
-        //     document.getElementById('stopCaptureVideo').style.display = "inline-block";
-        //     document.getElementById('startCaptureVideo').style.display = "none";
-        //   }
+        function captureVideo() {
+            intervalGetVideo = setInterval(function () {
+              Ohmni.captureVideo();
+            }, 33);
+            document.getElementById('videoCall').style.display = "";
+            document.getElementById('stopCaptureVideo').style.display = "inline-block";
+            document.getElementById('startCaptureVideo').style.display = "none";
+          }
       
-        //   function stopCaptureVideo() {
-        //     clearInterval(intervalGetVideo);
-        //     document.getElementById('videoCall').style.display = "none";
-        //     document.getElementById('startCaptureVideo').style.display = "inline-block";
-        //     document.getElementById('stopCaptureVideo').style.display = "none";
-        //   }
+          function stopCaptureVideo() {
+            clearInterval(intervalGetVideo);
+            document.getElementById('videoCall').style.display = "none";
+            document.getElementById('startCaptureVideo').style.display = "inline-block";
+            document.getElementById('stopCaptureVideo').style.display = "none";
+          }
       
-        //   function captureVideoCb(imageBase64) {
-        //     document.getElementById("videoCall").src = imageBase64;
-        //   }
+          function captureVideoCb(imageBase64) {
+            document.getElementById("videoCall").src = imageBase64;
+          }
 
         // Đọc hình ảnh video từ camera của Ohmni Robot
         //const streamURL = robot.getStreamURL();
