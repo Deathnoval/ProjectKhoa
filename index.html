@@ -151,19 +151,19 @@
             element.addEventListener("mousedown", changeColor);
         });
         function moveForward() {
-            Ohmni.move(-500, 500, 500);
-        }
-
-        function moveBackward() {
             Ohmni.move(500, -500, 500);
         }
 
+        function moveBackward() {
+            Ohmni.move(-500, 500, 500);
+        }
+
         function turnLeft() {
-            Ohmni.move(0, -500, 500);
+            Ohmni.move(-500, -500, 500);
         }
 
         function turnRight() {
-            Ohmni.move(-500, 0, 500);
+            Ohmni.move(500, 500, 500);
         }
 
         function stop() {
