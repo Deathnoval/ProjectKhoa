@@ -100,9 +100,9 @@
         </div>
         <div class="distance">
             <h2>Khoảng Cách Đọc</h2>
-            <p id="distance-reading">Đang đọc...</p>
-
-            <div id="chart-distance" class="container"></div>
+            <p id="data"></p>
+            
+            
         </div>
     </main>
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -221,7 +221,7 @@
                     break;
             }
         });
-        var chartT = new Highcharts.Chart({
+        <!-- var chartT = new Highcharts.Chart({
             chart: { renderTo: 'chart-distance' },
             title: { text: 'HC-SR04 Distance' },
             series: [{
@@ -260,9 +260,45 @@
             };
             xhttp.open("GET", "/distance", true);
             xhttp.send();
-        }, 3000);
+        }, 3000); -->
 
     </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+    <!-- lien ket voi functions.js -->
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDqr_-jMSMpHtvS_6GP7wRxjH102Nm-k0M",
+          authDomain: "project2-ede22.firebaseapp.com",
+          databaseURL: "https://project2-ede22-default-rtdb.firebaseio.com",
+          projectId: "project2-ede22",
+          storageBucket: "project2-ede22.appspot.com",
+          messagingSenderId: "931606628485",
+          appId: "1:931606628485:web:ac9b66409669053e3601ec"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        
+        //functions
+        // make sure that the name in ' ' match with name of your database child
+        var data = document.getElementById('data');
+        var dbRef = firebase.database().ref().child('data');
+        
+        dbRef.on('value', snap => data.innerText = snap.val());
+        
+      </script>
 </body>
 
 </html>
